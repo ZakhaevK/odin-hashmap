@@ -1,3 +1,3 @@
-# odin-linked-list
+# odin-hashmap
 
-Simple project for creating a Linked List class, featuring a Node class.
+Project involving a simple HashMap class.

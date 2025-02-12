@@ -1,0 +1,5 @@
+export { HashMap };
+
+class HashMap {
+
+}
