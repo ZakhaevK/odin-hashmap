@@ -121,9 +121,9 @@ class HashMap {
 
     const keyArray = [];
 
-    this.buckets.forEach((value) => {
-      value.forEach((value) => {
-        keyArray.push(value[0]);
+    this.buckets.forEach((bucket) => {
+      bucket.forEach((pair) => {
+        keyArray.push(pair[0]);
       });
     });
     return keyArray;
@@ -136,9 +136,9 @@ class HashMap {
 
     const valueArray = [];
 
-    this.buckets.forEach((value) => {
-      value.forEach((value) => {
-        valueArray.push(value[1]);
+    this.buckets.forEach((bucket) => {
+      bucket.forEach((pair) => {
+        valueArray.push(pair[1]);
       });
     });
     return valueArray;
@@ -149,13 +149,13 @@ class HashMap {
       return null;
     }
 
-    const valueArray = [];
+    const pairArray = [];
 
-    this.buckets.forEach((value) => {
-      value.forEach((value) => {
-        valueArray.push(value);
+    this.buckets.forEach((bucket) => {
+      bucket.forEach((pair) => {
+        pairArray.push(pair);
       });
     });
-    return valueArray;
+    return pairArray;
   }
 }
