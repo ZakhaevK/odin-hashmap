@@ -1,7 +1,7 @@
 export { HashMap };
 
 class HashMap {
-  loadFactor = 0.8;
+  loadFactor = 0.75;
   capacity = 16;
   pairs = 0;
   buckets = [];
@@ -28,9 +28,9 @@ class HashMap {
 
 
     // Handle existing entry in bucket, by overwriting the value
-    for (let entry of this.buckets[hashKey]) {
-      if (entry[0] === key) {
-        entry[1] = value; 
+    for (let pair of this.buckets[hashKey]) {
+      if (pair[0] === key) {
+        pair[1] = value; 
         return;
       }
     }
@@ -38,6 +38,41 @@ class HashMap {
     this.buckets[hashKey].push([key, value]);
     this.pairs++;
 
-    // !!! Resize to be added here once method is implemented !!!
+    if (this.pairs / this.capacity > this.loadFactor) {
+      this.resize();
+    }
+  }
+
+  resize() {
+
+    this.capacity *= 2;
+    const newBuckets = [];
+
+    for (const hashKey of this.buckets) {
+      if (!newBuckets[hashKey]) {
+        newBuckets.push(hashKey);
+      }
+
+      for (let pair of hashKey) {
+        newBuckets[hashKey].push(pair);
+      }
+    }
+
+    this.buckets = newBuckets;
+
+  }
+
+  get(key) {
+    const hashKey = this.hash(key);
+    let value = null;
+
+    if (!this.buckets[hashKey]) {
+      return value
+    }
+
+    for (const pair of this.buckets[hashKey]) {
+      if (pair[0] === key) value = pair[1];
+    }
+    return value
   }
 }
