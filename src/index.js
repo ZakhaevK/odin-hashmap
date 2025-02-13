@@ -27,3 +27,14 @@ console.log("Return all values: ");
 console.log(test.values());
 console.log("Return all entries: ");
 console.log(test.entries());
+test.clear();
+console.log("Return all entries after clear(): ");
+console.log(test.entries());
+console.log("Return length after clear(): ");
+console.log(test.length());
+test.set("A key", "A value");
+console.log("Return all entries one entry: ");
+console.log(test.entries());
+console.log("Return length after one entry: ");
+console.log(test.length());
+
